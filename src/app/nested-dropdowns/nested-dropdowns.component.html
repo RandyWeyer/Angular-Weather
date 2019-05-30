@@ -1,0 +1,20 @@
+<div class="container">
+  
+  <select id="firstDropDown" (change)="storeIndex()" [(ngModel)]="selectedCountry">
+    <option *ngFor="let country of Countries; let i = index" value={{i}}>
+    {{i}} {{country.name}}
+    </option>
+  </select>
+  
+  <select id="secondDropDown" (change)="storeIndex2()" [(ngModel)]="selectedState">
+    <option *ngFor="let mono of tempStates; let j = index" value={{j}}>
+      {{j}} {{tempStates[j]}}
+    </option>
+  </select>
+
+    <select>
+    <option *ngFor="let duo of tempCities; let k = index">
+      {{k}} {{tempCities[k]}}
+    </option>
+  </select>
+</div>

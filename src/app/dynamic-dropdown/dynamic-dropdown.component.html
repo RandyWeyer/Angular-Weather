@@ -1,0 +1,65 @@
+<style>
+  .circle {
+    border-radius: 50%;
+    width: 30px;
+    color: white;
+  }
+  .color-red {
+    background-color: red;
+  }
+  .color-green {
+    background-color: green;
+  }
+
+ /* The alert message box */
+.notify-user {
+  display: none;
+  padding: 20px;
+  background-color: #f44336; /* Red */
+  color: white;
+  margin-bottom: 15px;
+}
+
+/* The close button */
+.closebtn {
+  margin-left: 15px;
+  color: white;
+  font-weight: bold;
+  float: right;
+  font-size: 22px;
+  line-height: 20px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+/* When moving the mouse over the close button */
+.closebtn:hover {
+  color: black;
+} 
+  </style>
+<div class="container">
+  <div class="row">
+    <div class="col-md-6">
+        <h2>This is the left side</h2>
+        <select class="left-menu" multiple>
+          <option><a class="circle color-green"> &#65291; </a>HTML</option>
+          <option><a class="circle color-green"> &#65291; </a>CSS</option>
+          <option><a class="circle color-green"> &#65291; </a>JavaScript</option>
+        </select>
+        <button (click)="moveRight()">Move Right</button>
+    </div>
+    <div class="col-md-6">
+      <h2>This is the right side</h2>
+        <select class="right-menu" multiple>
+          <option><a class="circle color-red"> &#8722; </a>HTML</option>
+          <option><a class="circle color-red"> &#8722; </a>CSS</option>
+          <option><a class="circle color-red"> &#8722; </a>JavaScript</option>
+        </select>
+        <button (click)="moveLeft()">Move Left</button>
+    </div>
+  </div>
+  <div class="notify-user">
+    <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
+    This is an alert box.
+  </div>
+</div>

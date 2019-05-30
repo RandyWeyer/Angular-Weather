@@ -1,0 +1,39 @@
+<div class="container">
+  <table id="bookTable">
+    <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Title</th>
+        <th scope="col">Author</th>
+        <th scope="col">Country</th>
+        <th scope="col">Language</th>
+        <th scope="col">Pages</th>
+        <th scope="col">Year</th>
+        <th scope="col">Wikipedia Link</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let book of Books; let i = index">
+        <th scope="row">{{i + 1}}</th>
+        <td>{{book.title}}</td>
+        <td>{{book.author}}</td>
+        <td>{{book.country}}</td>
+        <td>{{book.language}}</td>
+        <td>{{book.pages}}</td>
+        <td>{{book.year}}</td>
+        <td><a href="{{book.link}}">Wikipedia</a></td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<!-- // {
+// "author": "Chinua Achebe",
+// "country": "Nigeria",
+// "imageLink": "images/things-fall-apart.jpg",
+// "language": "English",
+// "link": "https://en.wikipedia.org/wiki/Things_Fall_Apart\n",
+// "pages": 209,
+// "title": "Things Fall Apart",
+// "year": 1958
+// } -->
