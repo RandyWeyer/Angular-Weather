@@ -56,7 +56,6 @@ export class NestedDropdownsComponent implements OnInit {
         res.push(this.Countries[i].states[x]);
       }
     }
-    console.log(res.length);
     if (res === undefined) {
       res.push(' ');
     }
