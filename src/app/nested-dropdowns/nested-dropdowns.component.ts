@@ -7,8 +7,9 @@ import { HttpClient, HttpErrorResponse } from '@angular/common/http';
   styleUrls: ['./nested-dropdowns.component.css']
 })
 export class NestedDropdownsComponent implements OnInit {
-
+  //Import HttpClient in constructor
   constructor(private httpService: HttpClient) { }
+  //Define types of variables for use of countries
   Countries: object;
   States: object;
   statesArray: string[];
@@ -17,12 +18,17 @@ export class NestedDropdownsComponent implements OnInit {
   tempStates: string[];
   tempCities: string[];
 
+  //Function for checking empty arrays which returns a boolean
   isEmpty(obj) {
+    //For loop for each key, in the object array
     for (const key in obj) {
-        if (obj.hasOwnProperty(key)) {
+        // if the object has the defined property return false
+      if (obj.hasOwnProperty(key)) {
+
             return false;
-        }
+      }
     }
+    //If the for loop does not return false, it returns true
     return true;
 }
 
