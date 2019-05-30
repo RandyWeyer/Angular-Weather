@@ -1,20 +1,30 @@
-<div class="container">
+<div class="container" id="nested-drop-div">
   
-  <select id="firstDropDown" (change)="storeIndex()" [(ngModel)]="selectedCountry">
-    <option *ngFor="let country of Countries; let i = index" value={{i}}>
-    {{i}} {{country.name}}
-    </option>
-  </select>
+  <section class="row">
+    <select class="col-md-12" id="firstDropDown" (change)="storeIndex()" [(ngModel)]="selectedCountry">
+      <option *ngFor="let country of Countries; let i = index" value={{i}}>
+        {{i}} {{country.name}}
+      </option>
+    </select>
+  </section>
+  <section class="row">
+    <select class="col-md-12" id="secondDropDown" (change)="storeIndex()" [(ngModel)]="selectedState">
+      <option *ngFor="let mono of tempStates; let j = index" value={{j}}>
+        {{j}} {{tempStates[j]}}
+      </option>
+    </select>
+  </section>
+  <section class="row">
+    <select class="col-md-12">
+      <option *ngFor="let duo of tempCities; let k = index">
+        {{k}} {{tempCities[k]}}
+      </option>
+    </select>
+  </section>
   
-  <select id="secondDropDown" (change)="storeIndex()" [(ngModel)]="selectedState">
-    <option *ngFor="let mono of tempStates; let j = index" value={{j}}>
-      {{j}} {{tempStates[j]}}
-    </option>
-  </select>
 
-    <select>
-    <option *ngFor="let duo of tempCities; let k = index">
-      {{k}} {{tempCities[k]}}
-    </option>
-  </select>
+  
+
+
+
 </div>
