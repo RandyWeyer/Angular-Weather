@@ -31,19 +31,25 @@ export class NestedDropdownsComponent implements OnInit {
     //If the for loop does not return false, it returns true
     return true;
 }
-
+  //Function to store the index position of the countries/first dropdown element
   storeIndex() {
+    //Set the constant i, to whatever typecasted value is stored in the Id of 'firstDropDown'
     const i = (document.getElementById('firstDropDown') as HTMLInputElement).value;
+    //Set tempIndex to i
     this.tempIndex = i;
-
+    //If theArray of the states of the country and index position i is not empty (Like USA i.e. Washington, Florida...)
     if (!this.isEmpty(this.Countries[i].states)) {
+      //set the StatesArray to the value of the selected countries states
       this.statesArray = Object.keys(this.Countries[i].states);
+    //If the array is empty (like bahamas which does not have states)
     } else {
+      //Set the states array to an empty array, avoiding prior selections or dropdown population errors
       this.statesArray = [];
     }
 
-
+    //Set tempStates array to the statesArray
     this.tempStates = this.statesArray;
+    //Run the function storeIndex 2
     this.storeIndex2();
   }
 
