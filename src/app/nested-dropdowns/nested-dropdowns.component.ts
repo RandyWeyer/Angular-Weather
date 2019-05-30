@@ -97,6 +97,7 @@ export class NestedDropdownsComponent implements OnInit {
 
 
   ngOnInit() {
+    //Get the json data from the assets directory and returns the countries json data.
     this.httpService.get('../../assets/countries+states+cities.json').subscribe(
       data => {
         this.Countries = data;
