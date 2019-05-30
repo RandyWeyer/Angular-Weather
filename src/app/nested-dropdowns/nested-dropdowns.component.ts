@@ -55,7 +55,7 @@ export class NestedDropdownsComponent implements OnInit {
 
   //Function to store the index position of the first and second drop down element, to populate the cities/third dropdown
   storeIndex2() {
-
+    //Define const i as the typecast value stored in the id of 'firstDropDown'
     const i = (document.getElementById('firstDropDown') as HTMLInputElement).value;
     const j = (document.getElementById('secondDropDown') as HTMLInputElement).value;
     this.tempIndex = i;
