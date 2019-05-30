@@ -1,14 +1,26 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
+import { NgModel } from '@angular/forms';
+import { FormsModule } from '@angular/forms';
+import { GeocodeService } from './geocode.service';
+import { Location } from './location-model';
 
 @Component({
   selector: 'app-nested-dropdowns',
+  styles: ['agm-map { height: 300px; /* height is required */ }'],
   templateUrl: './nested-dropdowns.component.html',
   styleUrls: ['./nested-dropdowns.component.css']
 })
 export class NestedDropdownsComponent implements OnInit {
+  mapType = 'satellite';
+  address = 'Redmond';
+  location: Location;
+  loading: boolean;
   //Import HttpClient in constructor
-  constructor(private httpService: HttpClient) { }
+  constructor(
+    private httpService: HttpClient,
+    private geocodeService: GeocodeService,
+    private ref: ChangeDetectorRef) { }
   //Define types of variables for use of countries
   Countries: object;
   States: object;
@@ -30,6 +42,7 @@ export class NestedDropdownsComponent implements OnInit {
     }
     //If the for loop does not return false, it returns true
     return true;
+  }
 }
   //Function to store the index position of the countries/first dropdown element
   storeIndex() {
@@ -46,13 +59,12 @@ export class NestedDropdownsComponent implements OnInit {
       //Set the states array to an empty array, avoiding prior selections or dropdown population errors
       this.statesArray = [];
     }
-
+    this.tempCountry = this.Countries[i];
     //Set tempStates array to the statesArray
     this.tempStates = this.statesArray;
     //Run the function storeIndex 2
     this.storeIndex2();
   }
-
   //Function to store the index position of the first and second drop down element, to populate the cities/third dropdown
   storeIndex2() {
     //Define const i as the typecast value stored in the id of 'firstDropDown'
@@ -95,7 +107,21 @@ export class NestedDropdownsComponent implements OnInit {
     this.tempCities = res2;
   }
 
+  showLocation() {
+    const k = (document.getElementById('thirdDropDown') as HTMLInputElement).value;
+    this.addressToCoordinates(k);
+  }
 
+  addressToCoordinates(address) {
+    this.loading = true;
+    console.log(this.geocodeService);
+    this.geocodeService.geocodeAddress(address)
+      .subscribe((location: Location) => {
+        this.location = location;
+        this.loading = false;
+        this.ref.detectChanges();
+      });
+  }
   ngOnInit() {
     //Get the json data from the assets directory and returns the countries json data.
     this.httpService.get('../../assets/countries+states+cities.json').subscribe(
@@ -106,8 +132,6 @@ export class NestedDropdownsComponent implements OnInit {
         console.log(err.message);
       }
     );
-
-
   }
 
 }

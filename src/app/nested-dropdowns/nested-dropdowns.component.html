@@ -1,5 +1,14 @@
 <div class="container" id="nested-drop-div">
   <h1 id="component-title">API Nested Dropdown Component Demo</h1>
+
+<agm-map [latitude]="location?.lat" [longitude]="location?.lng" [zoom]="8" [disableDefaultUI]="false"
+  [zoomControl]="false">
+  <agm-marker [latitude]="location?.lat" [longitude]="location?.lng">
+  </agm-marker>
+</agm-map>
+<p *ngIf="loading">Loading...</p>
+
+
   <section class="row">
     <h3 class="col-md-4">Country Lookup</h3>
     <select class="col-md-8 dropdowns" id="firstDropDown" (change)="storeIndex()" [(ngModel)]="selectedCountry">
@@ -18,13 +27,10 @@
   </section>
   <section class="row">
     <h3 class="col-md-4">City Lookup</h3>
-    <select class="col-md-8 dropdowns">
+    <select class="col-md-8 dropdowns" id="thirdDropDown" (change)="showLocation()">
       <option *ngFor="let duo of tempCities; let k = index">
         {{k}} {{tempCities[k]}}
       </option>
     </select>
-  </section>
-  <section class="row" id="maplookup">
-    <p style="text-align:center;">Placeholder for maps</p>
   </section>
 </div>
