@@ -17,6 +17,8 @@ import { ApiConnectionComponent } from './api-connection/api-connection.componen
 import { BooksComponent } from './books/books.component';
 import { SearchSwitchComponent } from './search-switch/search-switch.component';
 import { NestedDropdownsComponent } from './nested-dropdowns/nested-dropdowns.component';
+import { AgmCoreModule } from '@agm/core';
+import { GeocodeService } from './nested-dropdowns/geocode.service';
 
 @NgModule({
   declarations: [
@@ -37,9 +39,16 @@ import { NestedDropdownsComponent } from './nested-dropdowns/nested-dropdowns.co
     AppRoutingModule,
     RouterModule.forRoot(allAppRoutes),
     ReactiveFormsModule,
-    HttpClientModule
+    HttpClientModule,
+    AgmCoreModule.forRoot({
+      apiKey: 'AIzaSyBXp0lh0iF-CK-wHPpSqYRV8IOHaJN3XNk'
+      // Google Maps API key
+    })
   ],
-  providers: [ApixuService],
+  providers: [
+    ApixuService,
+    GeocodeService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
