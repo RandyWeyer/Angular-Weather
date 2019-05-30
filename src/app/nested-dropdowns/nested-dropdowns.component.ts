@@ -78,15 +78,20 @@ export class NestedDropdownsComponent implements OnInit {
       //push a blank string literal into the response array
       res.push(' ');
     }
-
+    // for each element x in the response array j...
     for (const x in res[j]) {
+      //If x is true...
       if (true) {
+        //push the response array of index position [j][x] into the second response array
         res2.push(res[j][x]);
       }
     }
+    //If the second response array is undefined
     if (res2 === undefined) {
+      //push a blank string literal into the second response array
       res2.push(' ');
     }
+    //set tempCities array to the second response array
     this.tempCities = res2;
   }
 
