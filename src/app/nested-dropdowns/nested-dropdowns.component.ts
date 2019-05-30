@@ -57,11 +57,15 @@ export class NestedDropdownsComponent implements OnInit {
   storeIndex2() {
     //Define const i as the typecast value stored in the id of 'firstDropDown'
     const i = (document.getElementById('firstDropDown') as HTMLInputElement).value;
+    //Define const j as the typecast value stored in the id of 'secondDropDown'
     const j = (document.getElementById('secondDropDown') as HTMLInputElement).value;
+    //Set the tempIndex to i
     this.tempIndex = i;
-
+    //states
     const res = [];
+    //cities
     const res2 = [];
+
     for (const x in this.Countries[i].states) {
       if (this.Countries[i].states.hasOwnProperty(x)) {
         res.push(this.Countries[i].states[x]);
