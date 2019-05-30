@@ -1,30 +1,30 @@
 <div class="container" id="nested-drop-div">
-  
+  <h1 id="component-title">API Nested Dropdown Component Demo</h1>
   <section class="row">
-    <select class="col-md-12" id="firstDropDown" (change)="storeIndex()" [(ngModel)]="selectedCountry">
+    <h3 class="col-md-4">Country Lookup</h3>
+    <select class="col-md-8 dropdowns" id="firstDropDown" (change)="storeIndex()" [(ngModel)]="selectedCountry">
       <option *ngFor="let country of Countries; let i = index" value={{i}}>
         {{i}} {{country.name}}
       </option>
     </select>
   </section>
-  <section class="row">
-    <select class="col-md-12" id="secondDropDown" (change)="storeIndex()" [(ngModel)]="selectedState">
+  <section class="row ">
+    <h3 class="col-md-4">State Lookup</h3>
+    <select class="col-md-8 dropdowns" id="secondDropDown" (change)="storeIndex()" [(ngModel)]="selectedState">
       <option *ngFor="let mono of tempStates; let j = index" value={{j}}>
         {{j}} {{tempStates[j]}}
       </option>
     </select>
   </section>
   <section class="row">
-    <select class="col-md-12">
+    <h3 class="col-md-4">City Lookup</h3>
+    <select class="col-md-8 dropdowns">
       <option *ngFor="let duo of tempCities; let k = index">
         {{k}} {{tempCities[k]}}
       </option>
     </select>
   </section>
-  
-
-  
-
-
-
+  <section class="row" id="maplookup">
+    <p style="text-align:center;">Placeholder</p>
+  </section>
 </div>
