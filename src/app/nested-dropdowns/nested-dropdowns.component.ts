@@ -61,9 +61,9 @@ export class NestedDropdownsComponent implements OnInit {
     const j = (document.getElementById('secondDropDown') as HTMLInputElement).value;
     //Set the tempIndex to i
     this.tempIndex = i;
-    //states
+    //Define the response array that holds the value of states
     const res = [];
-    //cities
+    //Define the response array that holds the value of cities
     const res2 = [];
 
     for (const x in this.Countries[i].states) {
