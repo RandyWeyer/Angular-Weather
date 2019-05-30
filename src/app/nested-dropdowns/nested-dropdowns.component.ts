@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { HttpClientModule } from '@angular/common/http';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 
 @Component({
