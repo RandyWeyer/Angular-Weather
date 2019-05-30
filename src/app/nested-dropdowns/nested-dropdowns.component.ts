@@ -9,7 +9,6 @@ import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 export class NestedDropdownsComponent implements OnInit {
 
   constructor(private httpService: HttpClient) { }
-  arrCase: object[];
   Countries: object;
   States: object;
   statesArray: string[];
