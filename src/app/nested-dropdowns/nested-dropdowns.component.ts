@@ -11,13 +11,13 @@ export class NestedDropdownsComponent implements OnInit {
 
   constructor(private httpService: HttpClient) { }
   arrCase: object[];
-  Countries: any;
-  States: any;
-  statesArray: any;
-  tempIndex: any;
-  tempIndex2: any;
-  tempStates: any;
-  tempCities: any;
+  Countries: object;
+  States: object;
+  statesArray: string[];
+  tempIndex: string;
+  tempIndex2: string;
+  tempStates: string[];
+  tempCities: string[];
 
   isEmpty(obj) {
     for (const key in obj) {
