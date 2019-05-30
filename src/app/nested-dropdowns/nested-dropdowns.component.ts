@@ -65,15 +65,20 @@ export class NestedDropdownsComponent implements OnInit {
     const res = [];
     //Define the response array that holds the value of cities
     const res2 = [];
-
+    //For each index x in the given index position of the selected countries states...
     for (const x in this.Countries[i].states) {
+      // If the state has the defined properties of the index of x in the states array,
       if (this.Countries[i].states.hasOwnProperty(x)) {
+        //push the index x of the state element into the response array
         res.push(this.Countries[i].states[x]);
       }
     }
+    //If the response in undefined...
     if (res === undefined) {
+      //push a blank string literal into the response array
       res.push(' ');
     }
+
     for (const x in res[j]) {
       if (true) {
         res2.push(res[j][x]);
