@@ -6,7 +6,7 @@
     </option>
   </select>
   
-  <select id="secondDropDown" (change)="storeIndex2()" [(ngModel)]="selectedState">
+  <select id="secondDropDown" (change)="storeIndex()" [(ngModel)]="selectedState">
     <option *ngFor="let mono of tempStates; let j = index" value={{j}}>
       {{j}} {{tempStates[j]}}
     </option>

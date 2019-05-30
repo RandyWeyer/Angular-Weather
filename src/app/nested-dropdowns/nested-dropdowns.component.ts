@@ -13,18 +13,34 @@ export class NestedDropdownsComponent implements OnInit {
   arrCase: object[];
   Countries: any;
   States: any;
+  statesArray: any;
   tempIndex: any;
   tempIndex2: any;
   tempStates: any;
   tempCities: any;
 
+  isEmpty(obj) {
+    for (const key in obj) {
+        if (obj.hasOwnProperty(key)) {
+            return false;
+        }
+    }
+    return true;
+}
+
   storeIndex() {
     const i = (document.getElementById('firstDropDown') as HTMLInputElement).value;
     this.tempIndex = i;
 
-    const statesArray = Object.keys(this.Countries[i].states);
+    if (!this.isEmpty(this.Countries[i].states)) {
+      this.statesArray = Object.keys(this.Countries[i].states);
+    } else {
+      this.statesArray = [];
+    }
 
-    this.tempStates = statesArray;
+
+    this.tempStates = this.statesArray;
+    this.storeIndex2();
   }
 
 
@@ -40,11 +56,17 @@ export class NestedDropdownsComponent implements OnInit {
         res.push(this.Countries[i].states[x]);
       }
     }
-
+    console.log(res.length);
+    if (res === undefined) {
+      res.push(' ');
+    }
     for (const x in res[j]) {
-      if (res[x].hasOwnProperty(x)) {
+      if (true) {
         res2.push(res[j][x]);
       }
+    }
+    if (res2 === undefined) {
+      res2.push(' ');
     }
     this.tempCities = res2;
   }
@@ -54,7 +76,6 @@ export class NestedDropdownsComponent implements OnInit {
     this.httpService.get('../../assets/countries+states+cities.json').subscribe(
       data => {
         this.Countries = data;
-        console.log(this.Countries[0].states);
       },
       (err: HttpErrorResponse) => {
         console.log(err.message);
