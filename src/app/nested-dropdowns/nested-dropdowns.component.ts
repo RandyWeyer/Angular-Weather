@@ -114,7 +114,6 @@ export class NestedDropdownsComponent implements OnInit {
     }
 
   }
-<<<<<<< HEAD
   // This method passes the elemment's value and passes it to the addressToCoordinates method
   showLocation(): any {
     try {
