@@ -3,9 +3,10 @@
     "",
     "\\src",
     "\\src\\app",
+    "\\src\\app\\navbar-top",
     "\\src\\app\\nested-dropdowns",
     "\\src\\app\\search-switch"
   ],
-  "SelectedNode": "\\src\\app\\nested-dropdowns\\nested-dropdowns.component.ts",
+  "SelectedNode": "\\src\\app\\routes.ts",
   "PreviewInSolutionExplorer": false
 }

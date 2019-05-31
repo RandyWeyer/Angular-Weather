@@ -2,16 +2,17 @@
   <mat-toolbar-row>
     <h1>Sonic The Hedgehog Title</h1>
   </mat-toolbar-row>
-  <mat-toolbar-row >
-    <ul id="flex-container">
-      <li class="flex-item">Home</li>
-      <li class="flex-item">HTML-To-PDF</li>
-      <li class="flex-item">Table edit updpate</li>
-      <li class="flex-item">Dynamic Dropdowns</li>
-      <li class="flex-item">Api Connection</li>
-      <li class="flex-item">Books</li>
-      <li class="flex-item">Search Switch</li>
-      <li class="flex-item">Nested Dropdowns</li>
-    </ul>
+  <mat-toolbar-row>
+    <button mat-button [matMenuTriggerFor]="menu">Menu</button>
+    <mat-menu #menu="matMenu">
+      <button mat-menu-item>Home</button>
+      <button mat-menu-item>HTML-To-PDF</button>
+      <button mat-menu-item>Table Edit Update</button>
+      <button mat-menu-item>Api Connection</button>
+      <button mat-menu-item>Books</button>
+      <button mat-menu-item>Dynamic Dropdowns</button>
+      <button mat-menu-item>Nested Dropdowns Gmaps</button>
+      <button mat-menu-item>Search Switch</button>
+    </mat-menu>
   </mat-toolbar-row>
 </mat-toolbar>
