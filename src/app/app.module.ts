@@ -37,6 +37,7 @@ import { GeocodeService } from './nested-dropdowns/geocode.service';
   ],
   imports: [
     MatNativeDateModule,
+    MatRippleModule,
     MatCheckboxModule,
     MatCheckboxModule,
     MatButtonModule,
