@@ -113,7 +113,10 @@ export class NestedDropdownsComponent implements OnInit {
     this.addressToCoordinates(k);
   }
 
+  // The addressToCoordinates method takes the parameter address, sets loading to true, passes address to the geocode service,
+  // returns the data, and sets it as a location. it then checks changes.
   addressToCoordinates(address) {
+
     this.loading = true;
     this.geocodeService.geocodeAddress(address)
       .subscribe((location: Location) => {
