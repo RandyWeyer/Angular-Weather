@@ -13,15 +13,15 @@
     <h3 class="col-md-4">Country Lookup</h3>
     <select class="col-md-8 dropdowns" id="firstDropDown" (change)="storeIndex()" [(ngModel)]="selectedCountry">
       <option *ngFor="let country of Countries; let i = index" value={{i}}>
-        {{i}} {{country.name}}
+        {{country.name}}
       </option>
     </select>
   </section>
   <section class="row ">
     <h3 class="col-md-4">State Lookup</h3>
-    <select class="col-md-8 dropdowns" id="secondDropDown" (change)="storeIndex()" [(ngModel)]="selectedState">
+    <select class="col-md-8 dropdowns" id="secondDropDown" (change)="storeIndex2()" [(ngModel)]="selectedState">
       <option *ngFor="let mono of tempStates; let j = index" value={{j}}>
-        {{j}} {{tempStates[j]}}
+        {{tempStates[j]}}
       </option>
     </select>
   </section>
@@ -29,7 +29,7 @@
     <h3 class="col-md-4">City Lookup</h3>
     <select class="col-md-8 dropdowns" id="thirdDropDown" (change)="showLocation()">
       <option *ngFor="let duo of tempCities; let k = index">
-        {{k}} {{tempCities[k]}}
+        {{tempCities[k]}}
       </option>
     </select>
   </section>

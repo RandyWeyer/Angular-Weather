@@ -24,6 +24,9 @@ export class NestedDropdownsComponent implements OnInit {
   // Define types of variables for use of countries
   Countries: object;
   States: object;
+  currentCountry: string;
+  currentState: string;
+  fullAddress: string;
   statesArray: string[];
   tempCountry: string;
   tempIndex: string;
@@ -65,8 +68,10 @@ export class NestedDropdownsComponent implements OnInit {
     // Run the function storeIndex 2
     this.storeIndex2();
   }
+  
   // Function to store the index position of the first and second drop down element, to populate the cities/third dropdown
-  storeIndex2() {
+  storeIndex2(): any {    
+    
     // Define const i as the typecast value stored in the id of 'firstDropDown'
     const i = (document.getElementById('firstDropDown') as HTMLInputElement).value;
     // Define const j as the typecast value stored in the id of 'secondDropDown'
@@ -105,17 +110,43 @@ export class NestedDropdownsComponent implements OnInit {
     }
     // set tempCities array to the second response array
     this.tempCities = res2;
+
+    if(!(this.tempStates[0] == " " || this.tempCities[0] == " ")){
+      this.showLocation();
+    }
+
   }
 
-  showLocation() {
-    const k = (document.getElementById('thirdDropDown') as HTMLInputElement).value;
-    this.addressToCoordinates(k);
+  showLocation(): any {
+    try {
+      this.currentCountry = (document.getElementById('firstDropDown') as HTMLSelectElement)
+        .options[(document.getElementById('firstDropDown') as HTMLSelectElement).value].innerHTML;
+    } catch (error) {
+      this.currentCountry = " ";
+    }
+    try {
+       this.currentState = (document.getElementById('secondDropDown') as HTMLSelectElement)
+        .options[(document.getElementById('secondDropDown') as HTMLSelectElement).value].innerHTML;
+    } catch (error) {
+       this.currentState = " ";
+    }
+    let city = (document.getElementById('thirdDropDown') as HTMLSelectElement).value || " ";
+
+    this.addressToCoordinates(this.currentCountry, this.currentState, city);
   }
 
-  addressToCoordinates(address) {
+  addressToCoordinates(country, state, city) {
+    if(country != " " && state != " " && city != " "){
+      this.fullAddress = `${city}, ${state}, ${country}`;
+    } else if(country != " " && state != " "){
+      this.fullAddress = `${state}, ${country}`;
+    } else {
+      this.fullAddress = `${country}`;
+    }
+
+    console.log(this.fullAddress);
     this.loading = true;
-    console.log(this.geocodeService);
-    this.geocodeService.geocodeAddress(address)
+    this.geocodeService.geocodeAddress(this.fullAddress)
       .subscribe((location: Location) => {
         this.location = location;
         this.loading = false;
