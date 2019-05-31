@@ -1,0 +1,11 @@
+#flex-container{
+  display:flex;
+  flex-direction:row;
+}
+#flex-container > .flex-item {
+  flex: auto;
+}
+
+li{
+  list-style: none;
+}

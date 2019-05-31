@@ -21,6 +21,7 @@ import { SearchSwitchComponent } from './search-switch/search-switch.component';
 import { NestedDropdownsComponent } from './nested-dropdowns/nested-dropdowns.component';
 import { AgmCoreModule } from '@agm/core';
 import { GeocodeService } from './nested-dropdowns/geocode.service';
+import { NavbarTopComponent } from './navbar-top/navbar-top.component';
 
 @NgModule({
   declarations: [
@@ -34,6 +35,7 @@ import { GeocodeService } from './nested-dropdowns/geocode.service';
     BooksComponent,
     SearchSwitchComponent,
     NestedDropdownsComponent,
+    NavbarTopComponent,
   ],
   imports: [
     MatNativeDateModule,
