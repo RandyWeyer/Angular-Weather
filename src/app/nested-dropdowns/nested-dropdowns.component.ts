@@ -31,7 +31,7 @@ export class NestedDropdownsComponent implements OnInit {
   tempStates: string[];
   tempCities: string[];
 
-  // Function for checking empty arrays which returns a boolean
+  // Method for checking empty arrays which returns a boolean
   isEmpty(obj) {
     // For loop for each key, in the object array
     for (const key in obj) {
@@ -44,7 +44,7 @@ export class NestedDropdownsComponent implements OnInit {
     return true;
   }
 
-  // Function to store the index position of the countries/first dropdown element
+  // Method to store the index position of the countries/first dropdown element
   storeIndex() {
     // Set the constant i, to whatever typecasted value is stored in the Id of 'firstDropDown'
     const i = (document.getElementById('firstDropDown') as HTMLInputElement).value;
@@ -62,10 +62,10 @@ export class NestedDropdownsComponent implements OnInit {
     this.tempCountry = this.Countries[i];
     // Set tempStates array to the statesArray
     this.tempStates = this.statesArray;
-    // Run the function storeIndex 2
+    // Run the storeIndex2 method
     this.storeIndex2();
   }
-  // Function to store the index position of the first and second drop down element, to populate the cities/third dropdown
+  // Method to store the index position of the first and second drop down element, to populate the cities/third dropdown
   storeIndex2() {
     // Define const i as the typecast value stored in the id of 'firstDropDown'
     const i = (document.getElementById('firstDropDown') as HTMLInputElement).value;
