@@ -1,7 +1,5 @@
 import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
-import { NgModel } from '@angular/forms';
-import { FormsModule } from '@angular/forms';
 import { GeocodeService } from './geocode.service';
 import { Location } from './location-model';
 
@@ -12,15 +10,16 @@ import { Location } from './location-model';
   styleUrls: ['./nested-dropdowns.component.css']
 })
 export class NestedDropdownsComponent implements OnInit {
-  mapType = 'satellite';
-  address = 'Redmond';
-  location: Location;
-  loading: boolean;
   // Import HttpClient in constructor
   constructor(
     private httpService: HttpClient,
     private geocodeService: GeocodeService,
     private ref: ChangeDetectorRef) { }
+  // Define the type of variables for use of gmaps
+  mapType = 'satellite';
+  address = 'Redmond';
+  location: Location;
+  loading: boolean;
   // Define types of variables for use of countries
   Countries: object;
   States: object;
@@ -34,7 +33,7 @@ export class NestedDropdownsComponent implements OnInit {
   tempStates: string[];
   tempCities: string[];
 
-  // Function for checking empty arrays which returns a boolean
+  // Method for checking empty arrays which returns a boolean
   isEmpty(obj) {
     // For loop for each key, in the object array
     for (const key in obj) {
@@ -47,7 +46,7 @@ export class NestedDropdownsComponent implements OnInit {
     return true;
   }
 
-  // Function to store the index position of the countries/first dropdown element
+  // Method to store the index position of the countries/first dropdown element
   storeIndex() {
     // Set the constant i, to whatever typecasted value is stored in the Id of 'firstDropDown'
     const i = (document.getElementById('firstDropDown') as HTMLInputElement).value;
@@ -65,13 +64,12 @@ export class NestedDropdownsComponent implements OnInit {
     this.tempCountry = this.Countries[i];
     // Set tempStates array to the statesArray
     this.tempStates = this.statesArray;
-    // Run the function storeIndex 2
+    // Run the storeIndex2 method
     this.storeIndex2();
   }
-  
+
   // Function to store the index position of the first and second drop down element, to populate the cities/third dropdown
   storeIndex2(): any {    
-    
     // Define const i as the typecast value stored in the id of 'firstDropDown'
     const i = (document.getElementById('firstDropDown') as HTMLInputElement).value;
     // Define const j as the typecast value stored in the id of 'secondDropDown'
@@ -116,7 +114,8 @@ export class NestedDropdownsComponent implements OnInit {
     }
 
   }
-
+<<<<<<< HEAD
+  // This method passes the elemment's value and passes it to the addressToCoordinates method
   showLocation(): any {
     try {
       this.currentCountry = (document.getElementById('firstDropDown') as HTMLSelectElement)
@@ -130,11 +129,14 @@ export class NestedDropdownsComponent implements OnInit {
     } catch (error) {
        this.currentState = " ";
     }
+        // Constant k gets the value of the element with the id 'thirdDropdDown'
     let city = (document.getElementById('thirdDropDown') as HTMLSelectElement).value || " ";
-
+    // The constants this.currentCountry, this.currentState, city, is passed to the method addressToCoordinates
     this.addressToCoordinates(this.currentCountry, this.currentState, city);
   }
 
+  // The addressToCoordinates method takes the parameter address, sets loading to true, passes address to the geocode service,
+  // returns the data, and sets it as a location. it then checks changes.
   addressToCoordinates(country, state, city) {
     if(country != " " && state != " " && city != " "){
       this.fullAddress = `${city}, ${state}, ${country}`;
