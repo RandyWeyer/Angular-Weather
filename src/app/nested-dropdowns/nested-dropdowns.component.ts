@@ -1,7 +1,5 @@
 import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
-import { NgModel } from '@angular/forms';
-import { FormsModule } from '@angular/forms';
 import { GeocodeService } from './geocode.service';
 import { Location } from './location-model';
 
@@ -12,15 +10,16 @@ import { Location } from './location-model';
   styleUrls: ['./nested-dropdowns.component.css']
 })
 export class NestedDropdownsComponent implements OnInit {
-  mapType = 'satellite';
-  address = 'Redmond';
-  location: Location;
-  loading: boolean;
   // Import HttpClient in constructor
   constructor(
     private httpService: HttpClient,
     private geocodeService: GeocodeService,
     private ref: ChangeDetectorRef) { }
+  // Define the type of variables for use of gmaps
+  mapType = 'satellite';
+  address = 'Redmond';
+  location: Location;
+  loading: boolean;
   // Define types of variables for use of countries
   Countries: object;
   States: object;
@@ -106,15 +105,16 @@ export class NestedDropdownsComponent implements OnInit {
     // set tempCities array to the second response array
     this.tempCities = res2;
   }
-
+  // This method passes the elemment's value and passes it to the addressToCoordinates method
   showLocation() {
+    // Constant k gets the value of the element with the id 'thirdDropdDown'
     const k = (document.getElementById('thirdDropDown') as HTMLInputElement).value;
+    // The constant k, is passed to the method addressToCoordinates
     this.addressToCoordinates(k);
   }
 
   addressToCoordinates(address) {
     this.loading = true;
-    console.log(this.geocodeService);
     this.geocodeService.geocodeAddress(address)
       .subscribe((location: Location) => {
         this.location = location;
