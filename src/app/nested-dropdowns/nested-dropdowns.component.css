@@ -8,9 +8,3 @@
 #component-title{
   text-align:center;
 }
-mat-form-field{
-  background-color:dimgray;
-}
-mat-select{
-  width: 100%;
-}
